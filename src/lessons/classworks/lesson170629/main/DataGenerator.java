@@ -6,8 +6,13 @@ public class DataGenerator
 {
     private static final byte[] ALPHABET = {'A', 'C', 'G', 'T'};
 
-    public static byte[] generate(int size)
+    private static int GenomeSize = 3000;
+    private static int WordSize = 3;
+
+    public static byte[] generate()
     {
+        int size = getGenomeSize();
+
         byte[] data = new byte[size];
 
         Random random = new Random();
@@ -18,5 +23,25 @@ public class DataGenerator
         }
 
         return data;
+    }
+
+    public static int getGenomeSize()
+    {
+        return GenomeSize;
+    }
+
+    public static void setGenomeSize(int size)
+    {
+        GenomeSize = size;
+    }
+
+    public static int getWordSize()
+    {
+        return WordSize;
+    }
+
+    public static void setWordSize(int wordSize)
+    {
+        WordSize = wordSize;
     }
 }
