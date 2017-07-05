@@ -22,6 +22,11 @@ public class Genome
             this.data = data;
         }
 
+        public int getOffset()
+        {
+            return offset;
+        }
+
         @Override
         public int compareTo(Object another)
         {
@@ -128,6 +133,41 @@ public class Genome
 
         Collections.sort(genomeWords);
 
+        System.out.println("Found : \r\n");
+        int allDuplicatesCounter = 0;
+        for (int i = 0; i < genomeWords.size(); i++)
+        {
+            int counter = 1;
+            GenomeWord word_1 = genomeWords.get(i);
+            for (int j = i + 1; j < genomeWords.size(); j++)
+            {
+                GenomeWord word_2 = genomeWords.get(j);
+                if (word_1.equals(word_2))
+                {
+                    counter++;
+                }
+                else break;
+
+                i = j - 1;
+            }
+            if (counter >= 2)
+            {
+                allDuplicatesCounter += counter;
+                System.out.println(word_1 + " | " + counter + " entries");
+            }
+        }
+
+        System.out.println("\r\nDuplicates found: " + allDuplicatesCounter);
+    }
+
+    public static void findDuplicatesByHashCode(byte[] data, int wordSize)
+    {
+        List<GenomeWord> genomeWords = new ArrayList<>();
+        for (int i = 0; i < data.length; i += wordSize)
+        {
+            genomeWords.add(new GenomeWord(data, i, wordSize));
+        }
+
         int counter;
         Map<GenomeWord, Integer> duplicates = new HashMap<>();
         for (GenomeWord word : genomeWords)
@@ -149,9 +189,13 @@ public class Genome
         {
             GenomeWord key = pair.getKey();
             int value = pair.getValue();
-            allDuplicatesCounter += value;
 
-            System.out.println(key + " | " + value + " entries");
+            if (value >= 2)
+            {
+                allDuplicatesCounter += value;
+
+                System.out.println(key + " | " + value + " entries");
+            }
         }
 
         System.out.println("\r\nDuplicates found: " + allDuplicatesCounter);
