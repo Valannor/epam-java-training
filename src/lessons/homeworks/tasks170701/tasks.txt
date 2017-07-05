@@ -9,3 +9,5 @@ July 1, 2017
 - Genome (optional).  Решить с помощью HashMap. Сравнить время с вариантом с сортировкой.
 
 - Все задания Logic в CodingBat
+
+3

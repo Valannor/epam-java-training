@@ -2,7 +2,7 @@ package lessons.homeworks.tasks170704;
 
 public class SimpleArrayPrinter
 {
-    public void printArray(int[] array)
+    public static void printArray(int[] array)
     {
         System.out.print("[");
 
@@ -20,7 +20,7 @@ public class SimpleArrayPrinter
         }
     }
 
-    public <T> void printArray(T[] array)
+    public static <T> void printArray(T[] array)
     {
         System.out.print("[");
 
@@ -43,9 +43,7 @@ public class SimpleArrayPrinter
         String[] c = {"a", "b", "c"};
         int[] d = new int[10];
 
-        SimpleArrayPrinter arrayPrinter = new SimpleArrayPrinter();
-
-        arrayPrinter.printArray(c);
-        arrayPrinter.printArray(d);
+        printArray(c);
+        printArray(d);
     }
 }

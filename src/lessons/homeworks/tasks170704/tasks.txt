@@ -5,6 +5,8 @@ July 4, 2017
 - Написать метод, печатающий элементы массива в одну строку, как в Arrays.toString, но без использования StringBuilder/StringBuffer.
 (Использовать обычные циклы (while или for) и System.out.print/println)
 
-- (optional) отсортировать миллион целых чисел.  сравнить стандартный Arrays.sort и Radix
+- (optional) отсортировать миллион целых чисел. сравнить стандартный Arrays.sort и Radix
 
-- Все задания Array  в CodingBat
+- Все задания Array в CodingBat
+
+2,3
