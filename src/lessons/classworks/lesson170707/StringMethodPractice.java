@@ -6,9 +6,7 @@ public class StringMethodPractice
     {
         String s1 = "   H e l l o   ";
 
-        System.out.println(trim(s1) + trim(s1).length());
-
-
+        System.out.println(trim(s1));
     }
 
     private static String trim(String s)
@@ -36,6 +34,6 @@ public class StringMethodPractice
             }
         }
 
-        return s.substring(index1, index2);
+        return s.substring(index1, index2 + 1);
     }
 }
