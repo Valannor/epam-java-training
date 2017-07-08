@@ -1,5 +1,7 @@
 package lessons.classworks.lesson170707;
 
+import java.util.Collections;
+
 public class StringMethodPractice
 {
     public static void main(String[] args)
@@ -22,7 +24,7 @@ public class StringMethodPractice
         int index2 = 0;
         for (int i = 0; i < s.length(); i++)
         {
-            char c = s.toCharArray()[i];
+            char c = s.charAt(i);
             if (c != ' ' && !go)
             {
                 index1 = i;
