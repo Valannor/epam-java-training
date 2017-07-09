@@ -4,6 +4,8 @@ import java.util.*;
 
 public class Genome
 {
+    // TODO: 09.07.2017 fix find methods - words can share symbols
+
     public static class GenomeWord implements Comparable
     {
         byte[] data;

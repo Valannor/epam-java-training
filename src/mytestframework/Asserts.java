@@ -2,14 +2,17 @@ package mytestframework;
 
 public class Asserts
 {
-
     public static boolean assertEquals(String actual, String expected)
     {
         boolean equals = actual.equals(expected);
         if (!equals)
         {
-            System.err.println("Test failed: expected " + expected + ", but actual " + actual);
+            System.err.println("Test FAILED: expected \"" + expected + "\", but actual \"" + actual + "\"");
+        } else
+        {
+            System.out.println("Test PASSED: expected \"" + expected + "\", actual \"" + actual + "\"");
         }
+
         return equals;
     }
 
@@ -18,8 +21,12 @@ public class Asserts
         boolean notEquals = !actual.equals(expected);
         if (!notEquals)
         {
-            System.err.println("Test failed: expected NOT " + expected + ", but actual " + actual);
+            System.err.println("Test FAILED: expected NOT \"" + expected + "\", but actual \"" + actual + "\"");
+        } else
+        {
+            System.out.println("Test PASSED: expected NOT \"" + expected + "\", actual \"" + actual + "\"");
         }
+
         return notEquals;
     }
 
@@ -28,8 +35,12 @@ public class Asserts
         boolean equals = actual == expected;
         if (!equals)
         {
-            System.err.println("Test failed: expected " + expected + ", but actual " + actual);
+            System.err.println("Test FAILED: expected \"" + expected + "\", but actual \"" + actual + "\"");
+        } else
+        {
+            System.out.println("Test PASSED: expected \"" + expected + "\", actual \"" + actual + "\"");
         }
+
         return equals;
     }
 
@@ -38,8 +49,12 @@ public class Asserts
         boolean notEquals = actual != expected;
         if (!notEquals)
         {
-            System.err.println("Test failed: expected NOT " + expected + ", but actual " + actual);
+            System.err.println("Test FAILED: expected NOT \"" + expected + "\", but actual \"" + actual + "\"");
+        } else
+        {
+            System.out.println("Test PASSED: expected NOT \"" + expected + "\", actual \"" + actual + "\"");
         }
+
         return notEquals;
     }
 
@@ -48,8 +63,12 @@ public class Asserts
         boolean equals = actual == expected;
         if (!equals)
         {
-            System.err.println("Test failed: expected " + expected + ", but actual " + actual);
+            System.err.println("Test FAILED: expected \"" + expected + "\", but actual \"" + actual + "\"");
+        } else
+        {
+            System.out.println("Test PASSED: expected \"" + expected + "\", actual \"" + actual + "\"");
         }
+
         return equals;
     }
 
@@ -58,8 +77,12 @@ public class Asserts
         boolean notEquals = actual != expected;
         if (!notEquals)
         {
-            System.err.println("Test failed: expected NOT " + expected + ", but actual " + actual);
+            System.err.println("Test FAILED: expected NOT \"" + expected + "\", but actual \"" + actual + "\"");
+        } else
+        {
+            System.out.println("Test PASSED: expected NOT \"" + expected + "\", actual \"" + actual + "\"");
         }
+
         return notEquals;
     }
 }

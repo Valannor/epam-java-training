@@ -1,4 +1,4 @@
-package lessons.classworks.lesson170707;
+package lessons.homeworks.tasks170707.MyArrayList;
 
 public class MyArrayListTest
 {
