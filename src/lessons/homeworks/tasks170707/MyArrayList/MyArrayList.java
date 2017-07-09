@@ -1,8 +1,11 @@
 package lessons.homeworks.tasks170707.MyArrayList;
 
 import java.util.Arrays;
+import java.util.Iterator;
+import java.util.Spliterator;
+import java.util.function.Consumer;
 
-public class MyArrayList <E>
+public class MyArrayList<E> implements Iterable
 {
     private static final int DEFAULT_SIZE = 10;
 
@@ -18,7 +21,7 @@ public class MyArrayList <E>
         elements = new Object[DEFAULT_SIZE];
     }
 
-    int size = 0;
+    private int size = 0;
 
     public boolean add(E obj)
     {
@@ -32,8 +35,48 @@ public class MyArrayList <E>
         return true;
     }
 
+    public void add(int index, E obj)
+    {
+        if (elements.length == (size))
+        {
+            elements = Arrays.copyOf(elements, elements.length * 2);
+        }
+
+        System.arraycopy(elements, index, elements, index + 1, size++);
+
+        elements[index] = obj;
+    }
+
+    public int size()
+    {
+        return size;
+    }
+
+    public boolean isEmpty()
+    {
+        return size == 0;
+    }
+
     public boolean remove(E obj)
     {
+        for (int i = 0; i < size; i++)
+        {
+            Object element = elements[i];
+
+            if (element == null)
+            {
+                return false;
+            }
+
+            if (element.equals(obj))
+            {
+                System.arraycopy(elements, i + 1, elements, i, --size - i);
+                elements[size] = null;
+
+                return true;
+            }
+        }
+
         return false;
     }
 
@@ -45,8 +88,32 @@ public class MyArrayList <E>
         }
 
         System.arraycopy(elements, index + 1, elements, index, --size - index);
+        elements[size] = null;
 
-        return false;
+        return true;
+    }
+
+    public E get(int index)
+    {
+        if (index >= size || index < 0)
+        {
+            throw new IndexOutOfBoundsException();
+        }
+
+        return (E) elements[index];
+    }
+
+    public E set(int index, Object obj)
+    {
+        if (index >= size || index < 0)
+        {
+            throw new IndexOutOfBoundsException();
+        }
+
+        Object old = elements[index];
+        elements[index] = obj;
+
+        return (E) old;
     }
 
     @Override
@@ -68,5 +135,23 @@ public class MyArrayList <E>
         sb.append(']');
 
         return sb.toString();
+    }
+
+    @Override
+    public Iterator iterator()
+    {
+        return null;
+    }
+
+    @Override
+    public void forEach(Consumer action)
+    {
+
+    }
+
+    @Override
+    public Spliterator spliterator()
+    {
+        return null;
     }
 }
