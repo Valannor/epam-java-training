@@ -9,8 +9,8 @@ public class QuickRadixTest
 {
     public static void main(String[] args)
     {
-        int[] array1 = NumberSetGenerator.generate(1000000);
-        int[] array2 = Arrays.copyOf(array1, 1000000);
+        int[] array1 = NumberSetGenerator.generate(1_000_000);
+        int[] array2 = Arrays.copyOf(array1, 1_000_000);
 
         Timer.startTimer();
         Arrays.sort(array1);
