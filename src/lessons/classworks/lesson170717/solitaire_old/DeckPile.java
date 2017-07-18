@@ -2,11 +2,11 @@ package lessons.classworks.lesson170717.solitaire_old;
 
 class DeckPile extends CardPile
 {
-
     DeckPile(int x, int y)
     {
         // first initialize parent
         super(x, y);
+
         // then create the new deck
         // first put them into a local pile
         CardPile pileOne = new CardPile(0, 0);
@@ -16,10 +16,11 @@ class DeckPile extends CardPile
         {
             for (int j = 0; j <= 12; j++)
             {
-                pileOne.addCard(new Card(i, j));
+                pileOne.push(new Card(i, j));
                 count++;
             }
         }
+
         // then pull them out randomly
         for (; count > 0; count--)
         {
@@ -27,14 +28,14 @@ class DeckPile extends CardPile
             // move down to a random location
             for (int i = 0; i < limit; i++)
             {
-                pileTwo.addCard(pileOne.pop());
+                pileTwo.push(pileOne.pop());
             }
             // then add the card found there
-            addCard(pileOne.pop());
+            push(pileOne.pop());
             // then put the decks back together
             while (!pileTwo.empty())
             {
-                pileOne.addCard(pileTwo.pop());
+                pileOne.push(pileTwo.pop());
             }
         }
     }
@@ -46,6 +47,6 @@ class DeckPile extends CardPile
         {
             return;
         }
-        Solitaire.discardPile.addCard(pop());
+        Solitaire.discardPile.push(this.pop());
     }
 }

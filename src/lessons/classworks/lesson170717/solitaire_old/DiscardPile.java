@@ -2,20 +2,19 @@ package lessons.classworks.lesson170717.solitaire_old;
 
 class DiscardPile extends CardPile
 {
-
     DiscardPile(int x, int y)
     {
         super(x, y);
     }
 
     @Override
-    public void addCard(Card aCard)
+    public void push(Card aCard)
     {
-        if (!aCard.faceUp())
+        if (!aCard.isFaceUp())
         {
             aCard.flip();
         }
-        super.addCard(aCard);
+        super.push(aCard);
     }
 
     @Override
@@ -30,7 +29,7 @@ class DiscardPile extends CardPile
         {
             if (Solitaire.suitPile[i].canTake(topCard))
             {
-                Solitaire.suitPile[i].addCard(topCard);
+                Solitaire.suitPile[i].push(topCard);
                 return;
             }
         }
@@ -38,11 +37,11 @@ class DiscardPile extends CardPile
         {
             if (Solitaire.tableau[i].canTake(topCard))
             {
-                Solitaire.tableau[i].addCard(topCard);
+                Solitaire.tableau[i].push(topCard);
                 return;
             }
         }
         // nobody can use it, put it back on our list
-        addCard(topCard);
+        push(topCard);
     }
 }

@@ -5,8 +5,8 @@ Simple Solitaire Card Game in Java
 Written by Tim Budd, Oregon State University, 1996
 */
 
+import java.applet.Applet;
 import java.awt.*;
-import java.applet.*;
 
 public class Solitaire extends Applet
 {
@@ -23,6 +23,7 @@ public class Solitaire extends Applet
         allPiles = new CardPile[13];
         suitPile = new SuitPile[4];
         tableau = new TablePile[7];
+
         // then fill them in
         allPiles[0] = deckPile = new DeckPile(335, 5);
         allPiles[1] = discardPile = new DiscardPile(268, 5);

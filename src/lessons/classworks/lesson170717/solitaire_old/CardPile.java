@@ -4,16 +4,19 @@ import java.awt.*;
 
 class CardPile
 {
+    // coordinates of the card pile
+    protected int x;
+    protected int y;
+    private Card firstCard;
 
-    CardPile(int xl, int yl)
+    CardPile(int xCoord, int yCoord)
     {
-        x = xl;
-        y = yl;
+        x = xCoord;
+        y = yCoord;
         firstCard = null;
     }
 
     // access to cards are not overridden
-
     public Card top()
     {
         return firstCard;
@@ -22,6 +25,12 @@ class CardPile
     public boolean empty()
     {
         return firstCard == null;
+    }
+
+    public void push(Card aCard)
+    {
+        aCard.link = firstCard;
+        firstCard = aCard;
     }
 
     public Card pop()
@@ -36,22 +45,15 @@ class CardPile
     }
 
     // the following are sometimes overridden
-
-    public boolean includes(int tx, int ty)
+    public boolean includes(int clickX, int clickY)
     {
-        return x <= tx && tx <= x + Card.width &&
-                y <= ty && ty <= y + Card.height;
+        return x <= clickX && clickX <= x + Card.width &&
+                y <= clickY && clickY <= y + Card.height;
     }
 
     public void select(int tx, int ty)
     {
         // do nothing
-    }
-
-    public void addCard(Card aCard)
-    {
-        aCard.link = firstCard;
-        firstCard = aCard;
     }
 
     public void display(Graphics g)
@@ -70,9 +72,4 @@ class CardPile
     {
         return false;
     }
-
-    // coordinates of the card pile
-    protected int x;
-    protected int y;
-    private Card firstCard;
 }
