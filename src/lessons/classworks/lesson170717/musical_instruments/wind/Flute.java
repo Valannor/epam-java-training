@@ -1,4 +1,4 @@
-package lessons.classworks.lesson170717.wind;
+package lessons.classworks.lesson170717.musical_instruments.wind;
 
 public class Flute extends WindInstrument
 {

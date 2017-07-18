@@ -1,4 +1,4 @@
-package lessons.classworks.lesson170717.keyboard;
+package lessons.classworks.lesson170717.musical_instruments.keyboard;
 
 public class Piano extends KeyboardInstrument
 {
