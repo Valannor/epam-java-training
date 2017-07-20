@@ -19,23 +19,27 @@ public class Solitaire extends Applet
     @Override
     public void init()
     {
+        //Background properties
+        this.setBackground(Color.GREEN);
+        this.setSize(1025, 800);
+
         // first allocate the arrays
         allPiles = new CardPile[13];
         suitPile = new SuitPile[4];
         tableau = new TablePile[7];
 
         // then fill them in
-        allPiles[0] = deckPile = new DeckPile(335, 5);
-        allPiles[1] = discardPile = new DiscardPile(268, 5);
+        allPiles[0] = deckPile = new DeckPile(870, 30);
+        allPiles[1] = discardPile = new DiscardPile(730, 30);
         for (int i = 0; i < 4; i++)
         {
             allPiles[2 + i] = suitPile[i] =
-                    new SuitPile(15 + 60 * i, 5);
+                    new SuitPile(30 + 140 * i, 30);
         }
         for (int i = 0; i < 7; i++)
         {
             allPiles[6 + i] = tableau[i] =
-                    new TablePile(5 + 55 * i, 80, i + 1);
+                    new TablePile(30 + 140 * i, 225, i + 1);
         }
     }
 
