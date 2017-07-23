@@ -61,6 +61,56 @@ class TablePile extends CardPile
         {
             if (Solitaire.suitPile[i].canTake(topCard))
             {
+                if (topCard.prevCard != null && !topCard.prevCard.isFaceUp())
+                {
+                    topCard.prevCard.flip();
+                }
+
+                Solitaire.suitPile[i].push(topCard);
+                return;
+            }
+        }
+
+        // else see if any other table pile can take card
+        for (int i = 0; i < 7; i++)
+        {
+            if (Solitaire.tableau[i].canTake(topCard))
+            {
+                if (topCard.prevCard != null && !topCard.prevCard.isFaceUp())
+                {
+                    topCard.prevCard.flip();
+                }
+
+                Solitaire.tableau[i].push(topCard);
+                return;
+            }
+        }
+
+        // else put it back on our pile
+        push(topCard);
+    }
+
+    public void selectDrag(int tx, int ty)
+    {
+        if (empty())
+        {
+            return;
+        }
+
+        // if face down, then flip
+        Card topCard = top();
+        if (!topCard.isFaceUp())
+        {
+            topCard.flip();
+            return;
+        }
+
+        // else see if any getSuit pile can take card
+        topCard = pop();
+        for (int i = 0; i < 4; i++)
+        {
+            if (Solitaire.suitPile[i].canTake(topCard))
+            {
                 Solitaire.suitPile[i].push(topCard);
                 return;
             }
@@ -87,7 +137,7 @@ class TablePile extends CardPile
         {
             return y;
         }
-        localy = stackDisplay(g, aCard.link);
+        localy = stackDisplay(g, aCard.prevCard);
         aCard.draw(g, x, localy);
         return localy + 35;
     }

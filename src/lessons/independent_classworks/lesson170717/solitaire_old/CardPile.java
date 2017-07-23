@@ -7,39 +7,47 @@ class CardPile
     // coordinates of the card pile
     protected int x;
     protected int y;
-    private Card firstCard;
+    private Card topCard;
 
     CardPile(int xCoord, int yCoord)
     {
         x = xCoord;
         y = yCoord;
-        firstCard = null;
+        topCard = null;
     }
 
     // access to cards are not overridden
     public Card top()
     {
-        return firstCard;
+        return topCard;
     }
 
     public boolean empty()
     {
-        return firstCard == null;
+        return topCard == null;
     }
 
     public void push(Card aCard)
     {
-        aCard.link = firstCard;
-        firstCard = aCard;
+        aCard.prevCard = topCard;
+
+        if (topCard != null)
+            topCard.nextCard = aCard;
+
+        topCard = aCard;
     }
 
     public Card pop()
     {
         Card result = null;
-        if (firstCard != null)
+        if (topCard != null)
         {
-            result = firstCard;
-            firstCard = firstCard.link;
+            result = topCard;
+
+            if (topCard.prevCard != null)
+                topCard.prevCard.nextCard = null;
+
+            topCard = topCard.prevCard;
         }
         return result;
     }
@@ -59,12 +67,12 @@ class CardPile
     public void display(Graphics g)
     {
         g.setColor(Color.black);
-        if (firstCard == null)
+        if (topCard == null)
         {
             g.drawRect(x, y, Card.width, Card.height);
         } else
         {
-            firstCard.draw(g, x, y);
+            topCard.draw(g, x, y);
         }
     }
 

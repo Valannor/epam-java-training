@@ -24,7 +24,8 @@ class Card
     private int rank;
     private int suit;
 
-    public Card link;
+    public Card prevCard;
+    public Card nextCard; //may need this one day
 
     // constructor
     Card(int suit, int rank)
@@ -112,5 +113,21 @@ class Card
         { // face down
             g.drawImage(cardImage.getReverse(), x, y, null);
         }
+    }
+
+    @Override
+    public String toString()
+    {
+        String suit = null;
+        if (getSuit() == heart)
+            suit = "heart";
+        if (getSuit() == spade)
+            suit = "spade";
+        if (getSuit() == diamond)
+            suit = "diamond";
+        if (getSuit() == club)
+            suit = "club";
+
+        return "Rank: " + names[getRank()] + " || Suit: " + suit;
     }
 }
