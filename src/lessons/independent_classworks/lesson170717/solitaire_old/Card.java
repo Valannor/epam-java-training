@@ -15,6 +15,9 @@ class Card
     final static int width = 125;
     final static int height = 180;
 
+    private int xPile;
+    private int yPile;
+
     private static String names[] = {"A", "2", "3", "4", "5", "6",
             "7", "8", "9", "10", "J", "Q", "K"};
 
@@ -36,6 +39,28 @@ class Card
     }
 
     // access attributes of card
+
+
+    public int getX()
+    {
+        return xPile;
+    }
+
+    public void setX(int xPile)
+    {
+        this.xPile = xPile;
+    }
+
+    public int getY()
+    {
+        return yPile;
+    }
+
+    public void setY(int yPile)
+    {
+        this.yPile = yPile;
+    }
+
     public int getRank()
     {
         return rank;
@@ -67,10 +92,14 @@ class Card
 
     public void draw(Graphics g, int x, int y)
     {
+        // saving coordinates of each card
+        this.xPile = x;
+        this.yPile = y;
+
         // clear rectangle, draw border
         g.clearRect(x, y, width, height);
         g.setColor(Color.black);
-//        g.drawRect(x, y, width, height);
+        //g.drawRect(x, y, width, height);
         g.fillRect(x, y, width, height);
 
         // draw body of card

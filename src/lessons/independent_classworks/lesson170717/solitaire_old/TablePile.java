@@ -36,7 +36,7 @@ class TablePile extends CardPile
     {
         // don't test bottom of card
         return x <= clickX && clickX <= x + Card.width &&
-                y <= clickY;
+                y <= clickY && clickY <= top().getY() + Card.height;
     }
 
     @Override
@@ -52,6 +52,7 @@ class TablePile extends CardPile
         if (!topCard.isFaceUp())
         {
             topCard.flip();
+            lastOpen = topCard;
             return;
         }
 
@@ -64,6 +65,7 @@ class TablePile extends CardPile
                 if (topCard.prevCard != null && !topCard.prevCard.isFaceUp())
                 {
                     topCard.prevCard.flip();
+                    lastOpen = topCard.prevCard;
                 }
 
                 Solitaire.suitPile[i].push(topCard);
@@ -79,6 +81,7 @@ class TablePile extends CardPile
                 if (topCard.prevCard != null && !topCard.prevCard.isFaceUp())
                 {
                     topCard.prevCard.flip();
+                    lastOpen = topCard.prevCard;
                 }
 
                 Solitaire.tableau[i].push(topCard);

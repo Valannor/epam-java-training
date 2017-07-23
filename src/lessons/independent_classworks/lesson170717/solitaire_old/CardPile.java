@@ -8,6 +8,7 @@ class CardPile
     protected int x;
     protected int y;
     private Card topCard;
+    protected Card lastOpen;
 
     CardPile(int xCoord, int yCoord)
     {
