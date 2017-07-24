@@ -36,17 +36,25 @@ class TablePile extends CardPile
     @Override
     public boolean includes(int clickX, int clickY)
     {
-        if (x <= clickX && clickX <= x + Card.width &&
-                y <= clickY && clickY <= top().getY() + Card.height)
+        try
         {
-            Card temp = top();
-            while (!includesOne(temp, clickX, clickY))
+            if (x <= clickX && clickX <= x + Card.width &&
+                    y <= clickY && clickY <= top().getY() + Card.height)
             {
-                temp = temp.prevCard;
-            }
+                Card temp = top();
+                while (!includesOne(temp, clickX, clickY))
+                {
+                    temp = temp.prevCard;
+                }
 
-            chosenCard = temp;
-            return true;
+                chosenCard = temp;
+                return true;
+            }
+        }
+        catch (NullPointerException e)
+        {
+            System.err.println("There is no cards in the pile.");
+            e.printStackTrace();
         }
 
         return false;

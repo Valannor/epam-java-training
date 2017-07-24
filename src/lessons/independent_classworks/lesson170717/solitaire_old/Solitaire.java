@@ -74,7 +74,6 @@ public class Solitaire extends Applet
             if (discardPile.empty())
                 counter++;
 
-            // Not tested yet
             if (counter == 9)
                 init();
 
