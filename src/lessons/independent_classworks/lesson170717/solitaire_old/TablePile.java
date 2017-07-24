@@ -4,6 +4,8 @@ import java.awt.*;
 
 class TablePile extends CardPile
 {
+//    private Card chosenCard;
+
     TablePile(int x, int y, int c)
     {
         // initialize the parent class
@@ -34,7 +36,24 @@ class TablePile extends CardPile
     @Override
     public boolean includes(int clickX, int clickY)
     {
-        // don't test bottom of card
+        if (x <= clickX && clickX <= x + Card.width &&
+                y <= clickY && clickY <= top().getY() + Card.height)
+        {
+            Card temp = top();
+            while (!includesOne(temp, clickX, clickY))
+            {
+                temp = temp.prevCard;
+            }
+
+            chosenCard = temp;
+            return true;
+        }
+
+        return false;
+    }
+
+    public boolean includesSpec(int clickX, int clickY)
+    {
         return x <= clickX && clickX <= x + Card.width &&
                 y <= clickY && clickY <= top().getY() + Card.height;
     }
@@ -47,14 +66,29 @@ class TablePile extends CardPile
             return;
         }
 
-        // if face down, then flip
-        Card topCard = top();
-        if (!topCard.isFaceUp())
+        Card topCard;
+
+        if (tx != -1 && ty != -1)
         {
-            topCard.flip();
-            lastOpen = topCard;
-            return;
+            for (int i = 0; i < 7; i++)
+            {
+                if (this != Solitaire.tableau[i] && Solitaire.tableau[i].includesSpec(tx, ty))
+                {
+                    if (Solitaire.tableau[i].canTake(chosenCard))
+                    {
+                        if (chosenCard.prevCard != null && !chosenCard.prevCard.isFaceUp())
+                        {
+                            chosenCard.prevCard.flip();
+                        }
+
+                        topCard = pop();
+                        Solitaire.tableau[i].push(topCard);
+                        return;
+                    }
+                }
+            }
         }
+        chosenCard = null;
 
         // else see if any getSuit pile can take card
         topCard = pop();
@@ -65,7 +99,6 @@ class TablePile extends CardPile
                 if (topCard.prevCard != null && !topCard.prevCard.isFaceUp())
                 {
                     topCard.prevCard.flip();
-                    lastOpen = topCard.prevCard;
                 }
 
                 Solitaire.suitPile[i].push(topCard);
@@ -76,54 +109,13 @@ class TablePile extends CardPile
         // else see if any other table pile can take card
         for (int i = 0; i < 7; i++)
         {
-            if (Solitaire.tableau[i].canTake(topCard))
+            if (Solitaire.tableau[i] != this && Solitaire.tableau[i].canTake(topCard))
             {
                 if (topCard.prevCard != null && !topCard.prevCard.isFaceUp())
                 {
                     topCard.prevCard.flip();
-                    lastOpen = topCard.prevCard;
                 }
 
-                Solitaire.tableau[i].push(topCard);
-                return;
-            }
-        }
-
-        // else put it back on our pile
-        push(topCard);
-    }
-
-    public void selectDrag(int tx, int ty)
-    {
-        if (empty())
-        {
-            return;
-        }
-
-        // if face down, then flip
-        Card topCard = top();
-        if (!topCard.isFaceUp())
-        {
-            topCard.flip();
-            return;
-        }
-
-        // else see if any getSuit pile can take card
-        topCard = pop();
-        for (int i = 0; i < 4; i++)
-        {
-            if (Solitaire.suitPile[i].canTake(topCard))
-            {
-                Solitaire.suitPile[i].push(topCard);
-                return;
-            }
-        }
-
-        // else see if any other table pile can take card
-        for (int i = 0; i < 7; i++)
-        {
-            if (Solitaire.tableau[i].canTake(topCard))
-            {
                 Solitaire.tableau[i].push(topCard);
                 return;
             }

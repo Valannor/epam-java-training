@@ -7,11 +7,8 @@ Written by Tim Budd, Oregon State University, 1996
 
 import java.applet.Applet;
 import java.awt.*;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
-import java.awt.event.MouseMotionListener;
 
-public class Solitaire extends Applet implements MouseMotionListener, MouseListener
+public class Solitaire extends Applet
 {
     static DeckPile deckPile;
     static DiscardPile discardPile;
@@ -55,6 +52,8 @@ public class Solitaire extends Applet implements MouseMotionListener, MouseListe
         }
     }
 
+    boolean isIncluded = false;
+    CardPile pile = null;
     @Override
     public boolean mouseDown(Event evt, int x, int y)
     {
@@ -62,8 +61,9 @@ public class Solitaire extends Applet implements MouseMotionListener, MouseListe
         {
             if (allPiles[i].includes(x, y))
             {
-                allPiles[i].select(x, y);
-                repaint();
+                isIncluded = true;
+                pile = allPiles[i];
+
                 return true;
             }
         }
@@ -71,44 +71,14 @@ public class Solitaire extends Applet implements MouseMotionListener, MouseListe
     }
 
     @Override
-    public void mouseDragged(MouseEvent e)
+    public boolean mouseUp(Event evt, int x, int y)
     {
-
-    }
-
-    @Override
-    public void mouseMoved(MouseEvent e)
-    {
-
-    }
-
-    @Override
-    public void mouseClicked(MouseEvent e)
-    {
-
-    }
-
-    @Override
-    public void mousePressed(MouseEvent e)
-    {
-
-    }
-
-    @Override
-    public void mouseReleased(MouseEvent e)
-    {
-
-    }
-
-    @Override
-    public void mouseEntered(MouseEvent e)
-    {
-
-    }
-
-    @Override
-    public void mouseExited(MouseEvent e)
-    {
-
+        if (isIncluded)
+        {
+            pile.select(x, y);
+            repaint();
+            isIncluded = false;
+        }
+        return true;
     }
 }

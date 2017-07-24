@@ -8,7 +8,7 @@ class CardPile
     protected int x;
     protected int y;
     private Card topCard;
-    protected Card lastOpen;
+    protected Card chosenCard;
 
     CardPile(int xCoord, int yCoord)
     {
@@ -36,19 +36,40 @@ class CardPile
             topCard.nextCard = aCard;
 
         topCard = aCard;
+
+        if (aCard.nextCard != null)
+        {
+            push(aCard.nextCard);
+        }
     }
 
     public Card pop()
     {
         Card result = null;
-        if (topCard != null)
+
+        if (chosenCard == null)
         {
-            result = topCard;
+            if (topCard != null)
+            {
+                result = topCard;
 
-            if (topCard.prevCard != null)
-                topCard.prevCard.nextCard = null;
+                if (topCard.prevCard != null)
+                    topCard.prevCard.nextCard = null;
 
-            topCard = topCard.prevCard;
+                topCard = topCard.prevCard;
+            }
+        }
+        else
+        {
+            if (chosenCard != null)
+            {
+                result = chosenCard;
+
+                if (chosenCard.prevCard != null)
+                    chosenCard.prevCard.nextCard = null;
+
+                topCard = chosenCard.prevCard;
+            }
         }
         return result;
     }
@@ -58,6 +79,12 @@ class CardPile
     {
         return x <= clickX && clickX <= x + Card.width &&
                 y <= clickY && clickY <= y + Card.height;
+    }
+
+    public boolean includesOne(Card card, int clickX, int clickY)
+    {
+        return x <= clickX && clickX <= x + Card.width &&
+                card.getY() <= clickY && clickY <= top().getY() + Card.height;
     }
 
     public void select(int tx, int ty)
@@ -80,5 +107,19 @@ class CardPile
     public boolean canTake(Card aCard)
     {
         return false;
+    }
+
+    @Override
+    public String toString()
+    {
+        String result = top() + ", ";
+        Card temp = top();
+        while (temp.prevCard != null)
+        {
+            temp = temp.prevCard;
+            result += temp + ", ";
+        }
+
+        return result;
     }
 }

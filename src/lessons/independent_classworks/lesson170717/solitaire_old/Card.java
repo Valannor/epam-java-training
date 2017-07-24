@@ -39,8 +39,6 @@ class Card
     }
 
     // access attributes of card
-
-
     public int getX()
     {
         return xPile;
