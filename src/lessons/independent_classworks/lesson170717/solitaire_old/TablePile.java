@@ -92,19 +92,7 @@ class TablePile extends CardPile
 
         // else see if any getSuit pile can take card
         topCard = pop();
-        for (int i = 0; i < 4; i++)
-        {
-            if (Solitaire.suitPile[i].canTake(topCard))
-            {
-                if (topCard.prevCard != null && !topCard.prevCard.isFaceUp())
-                {
-                    topCard.prevCard.flip();
-                }
-
-                Solitaire.suitPile[i].push(topCard);
-                return;
-            }
-        }
+        if (selectForSuit(topCard)) return;
 
         // else see if any other table pile can take card
         for (int i = 0; i < 7; i++)
@@ -123,6 +111,35 @@ class TablePile extends CardPile
 
         // else put it back on our pile
         push(topCard);
+    }
+
+
+    public void selectInDoubleClick()
+    {
+        TablePile tablePile = this;
+        Card topCard = tablePile.pop();
+
+        if (selectForSuit(topCard)) return;
+
+        tablePile.push(topCard);
+    }
+
+    private boolean selectForSuit(Card topCard)
+    {
+        for (int j = 0; j < 4; j++)
+        {
+            if (Solitaire.suitPile[j].canTake(topCard))
+            {
+                if (topCard.prevCard != null && !topCard.prevCard.isFaceUp())
+                {
+                    topCard.prevCard.flip();
+                }
+
+                Solitaire.suitPile[j].push(topCard);
+                return true;
+            }
+        }
+        return false;
     }
 
     private int stackDisplay(Graphics g, Card aCard)

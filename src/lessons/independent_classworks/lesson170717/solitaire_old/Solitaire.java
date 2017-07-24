@@ -57,6 +57,31 @@ public class Solitaire extends Applet
     @Override
     public boolean mouseDown(Event evt, int x, int y)
     {
+        if (evt.clickCount == 2)
+        {
+            int counter = 0;
+            for (int i = 0; i < 7; i++)
+            {
+                TablePile tablePile = tableau[i];
+
+                if (tablePile.top() != null)
+                    tablePile.selectInDoubleClick();
+                else counter++;
+            }
+
+            if (deckPile.empty())
+                counter++;
+            if (discardPile.empty())
+                counter++;
+
+            // Not tested yet
+            if (counter == 9)
+                init();
+
+            repaint();
+            return true;
+        }
+
         for (int i = 0; i < 13; i++)
         {
             if (allPiles[i].includes(x, y))
