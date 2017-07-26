@@ -2,10 +2,8 @@ package lessons.homeworks.tasks170707.MyArrayList;
 
 import java.util.Arrays;
 import java.util.Iterator;
-import java.util.Spliterator;
-import java.util.function.Consumer;
 
-public class MyArrayList<E> implements Iterable
+public class MyArrayList<E> implements Iterable<E>
 {
     private static final int DEFAULT_SIZE = 10;
 
@@ -140,18 +138,26 @@ public class MyArrayList<E> implements Iterable
     @Override
     public Iterator iterator()
     {
-        return null;
-    }
+        Iterator<E> iterator = new Iterator<E>()
+        {
+            int cursor = 0;
 
-    @Override
-    public void forEach(Consumer action)
-    {
+            @Override
+            public boolean hasNext()
+            {
+                if (cursor < elements.length - 1 && elements[cursor] != null)
+                    return true;
 
-    }
+                return false;
+            }
 
-    @Override
-    public Spliterator spliterator()
-    {
-        return null;
+            @Override
+            public E next()
+            {
+                return (E) elements[cursor++];
+            }
+        };
+
+        return iterator;
     }
 }
