@@ -62,8 +62,20 @@ class TablePile extends CardPile
 
     public boolean includesSpec(int clickX, int clickY)
     {
-        return x <= clickX && clickX <= x + Card.width &&
-                y <= clickY && clickY <= top().getY() + Card.height;
+        try
+        {
+            return x <= clickX && clickX <= x + Card.width &&
+                    y <= clickY && clickY <= top().getY() + Card.height;
+        }
+        catch (NullPointerException e)
+        {
+            if (empty())
+            {
+                return true;
+            }
+        }
+
+        return false;
     }
 
     @Override
