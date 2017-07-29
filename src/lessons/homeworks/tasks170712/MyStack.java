@@ -37,12 +37,17 @@ public class MyStack <E>
     {
         if (size <= 0)
         {
-            return null;
+            return null; //stack underflow
         }
 
         E result = elements[--size];
         elements[size] = null;
 
         return result;
+    }
+
+    public E tos()
+    {
+        return size <= 0 ? null : elements[size - 1];
     }
 }
