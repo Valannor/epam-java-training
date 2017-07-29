@@ -9,5 +9,9 @@ public class MyStackTest
         MyStack<String> stack = new MyStack<>();
 
         Asserts.assertEquals(stack.push("one"), true);
+        stack.push("two");
+        stack.push("three");
+
+        Asserts.assertNotEquals(stack.push("four"), true);
     }
 }
