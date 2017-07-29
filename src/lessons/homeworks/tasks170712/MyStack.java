@@ -26,4 +26,9 @@ public class MyStack <E>
         elements[size++] = element;
         return true;
     }
+
+    public int size()
+    {
+        return size;
+    }
 }
