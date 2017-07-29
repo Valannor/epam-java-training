@@ -18,6 +18,8 @@ public class MyStackTest
         Asserts.assertEquals(stack.size(), 3);
         Asserts.assertNotEquals(stack.size(), 4);
 
+        Asserts.assertEquals(stack.toString(), "[one, two, three]");
+
         Asserts.assertEquals(stack.pop(), "three");
         Asserts.assertEquals(stack.tos(), "two");
 
