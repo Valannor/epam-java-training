@@ -1,5 +1,7 @@
 package lessons.homeworks.tasks170712;
 
+import java.util.Arrays;
+
 public class MyStack <E>
 {
     private static final int DEFAULT_MAX_SIZE = 3;
@@ -49,5 +51,11 @@ public class MyStack <E>
     public E tos()
     {
         return size <= 0 ? null : elements[size - 1];
+    }
+
+    @Override
+    public String toString()
+    {
+        return Arrays.toString(Arrays.copyOfRange(elements, 0, size));
     }
 }
