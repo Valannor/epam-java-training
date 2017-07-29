@@ -11,7 +11,12 @@ public class MyStackTest
         Asserts.assertEquals(stack.push("one"), true);
         stack.push("two");
         stack.push("three");
-
         Asserts.assertNotEquals(stack.push("four"), true);
+
+        Asserts.assertEquals(stack.size(), 3);
+        Asserts.assertNotEquals(stack.size(), 4);
+
+        Asserts.assertEquals(stack.pop(), "three");
+        Asserts.assertNotEquals(stack.pop(), "three");
     }
 }
