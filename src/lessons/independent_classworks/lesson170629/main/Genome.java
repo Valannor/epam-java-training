@@ -4,8 +4,6 @@ import java.util.*;
 
 public class Genome
 {
-    // TODO: 09.07.2017 fix find methods - words can share symbols
-
     public static class GenomeWord implements Comparable
     {
         byte[] data;
@@ -86,13 +84,13 @@ public class Genome
         Set<String> words = new HashSet<>();
         int allDuplicatesCounter = 0;
         NEXTLOOP:
-        for (int i = 0; i < data.length; i += wordSize)
+        for (int i = 0; i < data.length; i++)
         {
             int counter = 1;
             byte[] wordData = new byte[wordSize];
 
             NoMatch:
-            for (int j = i + wordSize; j < data.length - wordSize + 1; j += wordSize)
+            for (int j = i + 1; j < data.length - wordSize + 1; j++)
             {
                 for (int k = 0; k < wordSize; k++)
                 {
@@ -128,7 +126,7 @@ public class Genome
     public static void findDuplicatesWithSort(byte[] data, int wordSize)
     {
         List<GenomeWord> genomeWords = new ArrayList<>();
-        for (int i = 0; i < data.length; i += wordSize)
+        for (int i = 0; i < data.length - wordSize + 1; i++)
         {
             genomeWords.add(new GenomeWord(data, i, wordSize));
         }
@@ -165,7 +163,7 @@ public class Genome
     public static void findDuplicatesByHashCode(byte[] data, int wordSize)
     {
         List<GenomeWord> genomeWords = new ArrayList<>();
-        for (int i = 0; i < data.length; i += wordSize)
+        for (int i = 0; i < data.length; i++)
         {
             genomeWords.add(new GenomeWord(data, i, wordSize));
         }
