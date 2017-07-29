@@ -18,5 +18,10 @@ public class MyStackTest
 
         Asserts.assertEquals(stack.pop(), "three");
         Asserts.assertNotEquals(stack.pop(), "three");
+        stack.pop();
+        Asserts.assertEquals(stack.pop() == null, true);
+        Asserts.assertNotEquals(stack.pop() == null, false);
+
+
     }
 }

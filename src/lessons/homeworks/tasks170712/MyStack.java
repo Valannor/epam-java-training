@@ -35,6 +35,11 @@ public class MyStack <E>
 
     public E pop()
     {
+        if (size <= 0)
+        {
+            return null;
+        }
+
         E result = elements[--size];
         elements[size] = null;
 
