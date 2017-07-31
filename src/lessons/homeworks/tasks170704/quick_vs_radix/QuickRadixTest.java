@@ -1,4 +1,4 @@
-package lessons.homeworks.tasks170704;
+package lessons.homeworks.tasks170704.quick_vs_radix;
 
 import mytestframework.NumberSetGenerator;
 import mytestframework.Timer;
@@ -17,7 +17,8 @@ public class QuickRadixTest
         Timer.stopTimer("Quick sort");
 
         Timer.startTimer();
-        // TODO: 05.07.2017  
+        // TODO: 05.07.2017
+        array2 = RadixSort.sort(array2);
         Timer.stopTimer("Radix sort");
     }
 }
