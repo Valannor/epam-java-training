@@ -12,8 +12,13 @@ public class RadixSort
 
         boolean sorted = true;
         int index = 0;
+        int tempSize = array.length;
+
         for (int i = 0; i < 10; i++)
         {
+            int secondaryIndex = 0;
+            int[] temp = new int[tempSize];
+
             for (int n : array)
             {
                 int element = getElement(n, level);
@@ -27,7 +32,19 @@ public class RadixSort
                     result[index] = n;
                     index++;
                 }
+                else
+                {
+                    if (temp.length - 1 < secondaryIndex)
+                    {
+                        break;
+                    }
+                    temp[secondaryIndex] = n;
+                    secondaryIndex++;
+                }
             }
+
+            tempSize = secondaryIndex;
+            array = temp;
         }
 
         if (!sorted)
@@ -36,6 +53,7 @@ public class RadixSort
             return sort(result);
         }
 
+        level = 0;
         return result;
     }
 
