@@ -17,7 +17,7 @@ public class QuickRadixTest
         System.out.println(Timer.stopTimer("Quick sort"));
 
         Timer.startTimer();
-        array2 = RadixSort.sort(array2, 1);
+        array2 = RadixSort.sort(array2);
         System.out.println(Timer.stopTimer("Radix sort"));
 
         System.out.println(Arrays.equals(array1, array2));

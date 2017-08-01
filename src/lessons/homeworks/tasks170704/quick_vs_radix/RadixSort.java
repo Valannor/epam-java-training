@@ -4,7 +4,9 @@ import java.util.Arrays;
 
 public class RadixSort
 {
-    public static int[] sort(int[] array, int level)
+    private static int level;
+
+    public static int[] sort(int[] array)
     {
         int[] result = new int[array.length];
 
@@ -30,7 +32,8 @@ public class RadixSort
 
         if (!sorted)
         {
-            return sort(result, ++level);
+            level++;
+            return sort(result);
         }
 
         return result;
@@ -67,6 +70,6 @@ public class RadixSort
         int[] array = {5, 50, 6, 4, 100, 2, 143, 5};
 
         // [2, 4, 5, 5, 6, 50, 100, 143]
-        System.out.println(Arrays.toString(sort(array, 0)));
+        System.out.println(Arrays.toString(sort(array)));
     }
 }
