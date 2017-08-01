@@ -1,4 +1,4 @@
-package lessons.homeworks.tasks170704;
+package lessons.homeworks.tasks170704.array_printer;
 
 public class SimpleArrayPrinter
 {

@@ -1,4 +1,4 @@
-package lessons.independent_classworks.lesson170710;
+package lessons.homeworks.tasks170710;
 
 public class MyLinkedListTests
 {

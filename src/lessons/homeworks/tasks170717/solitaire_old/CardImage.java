@@ -1,4 +1,4 @@
-package lessons.independent_classworks.lesson170717.solitaire_old;
+package lessons.homeworks.tasks170717.solitaire_old;
 
 import javax.imageio.ImageIO;
 import java.awt.*;
@@ -9,16 +9,16 @@ public class CardImage
 {
     private static CardImage instance = new CardImage();
 
-    private static final String HEART_DIR = "/lessons/independent_classworks/lesson170717/solitaire_old/pics/heart.png";
-    private static final String SPADE_DIR = "/lessons/independent_classworks/lesson170717/solitaire_old/pics/spade.png";
-    private static final String DIAMOND_DIR = "/lessons/independent_classworks/lesson170717/solitaire_old/pics/diamond.png";
-    private static final String CLUB_DIR = "/lessons/independent_classworks/lesson170717/solitaire_old/pics/club.png";
-    private static final String REVERSE_DIR = "/lessons/independent_classworks/lesson170717/solitaire_old/pics/reverse.png";
+    private static final String HEART_DIR = "/lessons/homeworks/tasks170717/solitaire_old/pics/heart.png";
+    private static final String SPADE_DIR = "/lessons/homeworks/tasks170717/solitaire_old/pics/spade.png";
+    private static final String DIAMOND_DIR = "/lessons/homeworks/tasks170717/solitaire_old/pics/diamond.png";
+    private static final String CLUB_DIR = "/lessons/homeworks/tasks170717/solitaire_old/pics/club.png";
+    private static final String REVERSE_DIR = "/lessons/homeworks/tasks170717/solitaire_old/pics/reverse.png";
 
-    private static final String ACE_DIR = "/lessons/independent_classworks/lesson170717/solitaire_old/pics/faces/A.png";
-    private static final String KING_DIR = "/lessons/independent_classworks/lesson170717/solitaire_old/pics/faces/K.png";
-    private static final String QUIN_DIR = "/lessons/independent_classworks/lesson170717/solitaire_old/pics/faces/Q.png";
-    private static final String JACK_DIR = "/lessons/independent_classworks/lesson170717/solitaire_old/pics/faces/J.png";
+    private static final String ACE_DIR = "/lessons/homeworks/tasks170717/solitaire_old/pics/faces/A.png";
+    private static final String KING_DIR = "/lessons/homeworks/tasks170717/solitaire_old/pics/faces/K.png";
+    private static final String QUIN_DIR = "/lessons/homeworks/tasks170717/solitaire_old/pics/faces/Q.png";
+    private static final String JACK_DIR = "/lessons/homeworks/tasks170717/solitaire_old/pics/faces/J.png";
 
     private BufferedImage heart;
     private BufferedImage spade;

@@ -1,7 +1,7 @@
-package lessons.independent_classworks.lesson170629.tests;
+package lessons.homeworks.tasks170701.genome.tests;
 
-import lessons.independent_classworks.lesson170629.main.DataGenerator;
-import lessons.independent_classworks.lesson170629.main.Genome;
+import lessons.homeworks.tasks170701.genome.main.DataGenerator;
+import lessons.homeworks.tasks170701.genome.main.Genome;
 
 public class LoopGenomeTest
 {

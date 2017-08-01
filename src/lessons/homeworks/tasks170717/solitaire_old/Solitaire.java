@@ -1,4 +1,4 @@
-package lessons.independent_classworks.lesson170717.solitaire_old;
+package lessons.homeworks.tasks170717.solitaire_old;
 
 /*
 Simple Solitaire Card Game in Java

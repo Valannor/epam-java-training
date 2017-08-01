@@ -1,4 +1,4 @@
-package lessons.homeworks.tasks170701;
+package lessons.homeworks.tasks170701.row_sum;
 
 public class RowSum
 {

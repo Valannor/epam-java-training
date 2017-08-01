@@ -1,4 +1,4 @@
-package lessons.independent_classworks.lesson170710;
+package lessons.homeworks.tasks170710;
 
 public class MyLinkedList <E>
 {
@@ -27,8 +27,6 @@ public class MyLinkedList <E>
 
     public E remove(int index)
     {
-        // TODO: 10.07.2017 Homework
-
         E removedElement = null;
         Node<E> prev = null;
         Node<E> current = first;

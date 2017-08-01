@@ -1,0 +1,13 @@
+Home Tasks
+
+July 10, 2017
+
+Доделать MyLinkedList:
+- В toString использовать StringBuilder;
+- Реализовать remove(int index).
+
+Задания для себя:
+- Написать класс самостоятельно;
+- Создать дженерик.
+
+DONE!!!

@@ -1,4 +1,4 @@
-package lessons.independent_classworks.lesson170629.main;
+package lessons.homeworks.tasks170701.genome.main;
 
 import java.util.*;
 

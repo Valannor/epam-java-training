@@ -2,6 +2,13 @@ Home Tasks
 
 July 7, 2017
 
-- Дописать в StringMethodsPractice методы trim и replace
+Дописать MyString:
+- Реализовать методы trim и replace.
 
-- Доделать класс StringArrayList: добавить методы get, set, size, isEmpty, remove(value), toString (переписать)
+Доделать класс MyArrayList:
+- Добавить методы get, set, size, isEmpty, remove(value), toString (переписать).
+
+Задание для себя:
+- Сделать MyArrayList дженериком.
+
+DONE!!!
