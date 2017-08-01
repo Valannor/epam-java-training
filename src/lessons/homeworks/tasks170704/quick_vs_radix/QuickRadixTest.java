@@ -9,16 +9,19 @@ public class QuickRadixTest
 {
     public static void main(String[] args)
     {
-        int[] array1 = NumberSetGenerator.generate(1_000_000);
-        int[] array2 = Arrays.copyOf(array1, 1_000_000);
+        int[] array1 = NumberSetGenerator.generate(10_000_000);
+        int[] array2 = Arrays.copyOf(array1, 10_000_000);
 
         Timer.startTimer();
         Arrays.sort(array1);
-        Timer.stopTimer("Quick sort");
+        System.out.println(Timer.stopTimer("Quick sort"));
 
         Timer.startTimer();
-        // TODO: 05.07.2017
-        array2 = RadixSort.sort(array2);
-        Timer.stopTimer("Radix sort");
+        array2 = RadixSort.sort(array2, 1);
+        System.out.println(Timer.stopTimer("Radix sort"));
+
+        System.out.println(Arrays.equals(array1, array2));
+
+        //It works, but slower than regular quick sort.
     }
 }
