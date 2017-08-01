@@ -3,4 +3,5 @@ Home Tasks
 July 24, 2017
 
 Rat brain & Cat brain:
-- Create Rat & Cat (with Helpers and with Inners).
+- Create Rat (with Helpers);
+- Create Cat (with Inners).
