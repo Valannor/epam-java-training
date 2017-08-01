@@ -81,6 +81,9 @@ public class Solitaire extends Applet
             return true;
         }
 
+        // TODO: 01.08.2017 bug in double click (after card was dragged & dropped, double click clones deck,
+        // which received card into deck, where from it was taken)
+
         for (int i = 0; i < 13; i++)
         {
             if (allPiles[i].includes(x, y))
