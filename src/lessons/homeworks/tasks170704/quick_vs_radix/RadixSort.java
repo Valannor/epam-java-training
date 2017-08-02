@@ -58,32 +58,11 @@ public class RadixSort
 
     private static int getElement(int number, int level)
     {
-        int result = number / level;
-        result %= 10;
-
-        return result;
+        return (number / level) % 10;
     }
-
-//    private static int cut(int level)
-//    {
-//        int n = 10;
-//        int result = 1;
-//
-//        for (int i = 1; i < level; i++)
-//        {
-//            result *= n;
-//        }
-//
-//        return result;
-//    }
 
     public static void main(String[] args)
     {
-//        // 5
-//        System.out.println(getElement(256, 2));
-//        // 0
-//        System.out.println(getElement(6, 2));
-
         int[] array = {5, 50, 6, 4, 100, 2, 143, 5};
 
         // [2, 4, 5, 5, 6, 50, 100, 143]
