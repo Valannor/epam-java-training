@@ -4,7 +4,7 @@ import java.util.Arrays;
 
 public class RadixSort
 {
-    private static int level;
+    private static int level = 1;
 
     public static int[] sort(int[] array)
     {
@@ -49,34 +49,33 @@ public class RadixSort
 
         if (!sorted)
         {
-            level++;
+            level *= 10;
             return sort(result);
         }
 
-        level = 0;
         return result;
     }
 
     private static int getElement(int number, int level)
     {
-        int result = number / cut(level);
+        int result = number / level;
         result %= 10;
 
         return result;
     }
 
-    private static int cut(int level)
-    {
-        int n = 10;
-        int result = 1;
-
-        for (int i = 1; i < level; i++)
-        {
-            result *= n;
-        }
-
-        return result;
-    }
+//    private static int cut(int level)
+//    {
+//        int n = 10;
+//        int result = 1;
+//
+//        for (int i = 1; i < level; i++)
+//        {
+//            result *= n;
+//        }
+//
+//        return result;
+//    }
 
     public static void main(String[] args)
     {
