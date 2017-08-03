@@ -1,37 +1,47 @@
 package lessons.homeworks.tasks170724;
 
-import java.util.ArrayList;
-
 public class InteractWith
 {
     public static void main(String[] args)
     {
-        ArrayList<Interactive> pets = new ArrayList<>();
-        pets.add(new Cat());
-        pets.add(new MouseHelper(new Mouse()));
+        Cat cat = new Cat();
+        System.out.println();
+        cat.play();
+        System.out.println("-----------");
+        cat.feed();
+        System.out.println("-----------");
+        cat.feed();
+        System.out.println("-----------");
+        cat.wash();
+        System.out.println("-----------");
+        cat.play();
+        System.out.println("-----------");
+        cat.feed();
+        System.out.println("-----------");
+        cat.play();
+        System.out.println("-----------");
+        cat.play();
+        System.out.println("__________________________________________");
 
 
-        for (Interactive pet : pets)
-        {
-            System.out.println();
-            pet.play();
-            System.out.println("-----------");
-            pet.feed();
-            System.out.println("-----------");
-            pet.feed();
-            System.out.println("-----------");
-            pet.wash();
-            System.out.println("-----------");
-            pet.play();
-            System.out.println("-----------");
-            pet.feed();
-            System.out.println("-----------");
-            pet.play();
-            System.out.println("-----------");
-            pet.play();
-            System.out.println("__________________________________________");
-        }
+        MouseHelper mouseHelper = new MouseHelper(new Mouse());
+        System.out.println();
+        mouseHelper.play();
+        System.out.println("-----------");
+        mouseHelper.feed();
+        System.out.println("-----------");
+        mouseHelper.feed();
+        System.out.println("-----------");
+        mouseHelper.wash();
+        System.out.println("-----------");
+        mouseHelper.play();
+        System.out.println("-----------");
+        mouseHelper.feed();
+        System.out.println("-----------");
+        mouseHelper.play();
+        System.out.println("-----------");
+        mouseHelper.play();
+        System.out.println("__________________________________________");
     }
-
 
 }

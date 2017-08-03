@@ -1,7 +1,7 @@
 package lessons.homeworks.tasks170724;
 
 
-public class MouseHelper implements Mouse.MouseBrain
+public class MouseHelper
 {
     private Mouse mouse;
 
@@ -10,34 +10,26 @@ public class MouseHelper implements Mouse.MouseBrain
         this.mouse = mouse;
     }
 
-    @Override
     public void feed()
     {
         mouse.feed();
     }
 
-    @Override
     public void play()
     {
         mouse.play();
     }
 
-    @Override
     public void wash()
     {
         mouse.wash();
     }
 }
 
-class Mouse implements Pet
+class Mouse
 {
     private boolean hungry = true;
 
-    interface MouseBrain extends Brain
-    {
-    }
-
-    @Override
     public void feed()
     {
         eat();
@@ -45,7 +37,6 @@ class Mouse implements Pet
         hungry = false;
     }
 
-    @Override
     public void play()
     {
         if (hungry)
@@ -59,7 +50,6 @@ class Mouse implements Pet
         }
     }
 
-    @Override
     public void wash()
     {
         bite();
