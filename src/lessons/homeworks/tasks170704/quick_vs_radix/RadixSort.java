@@ -76,7 +76,7 @@ public class RadixSort
 
         for (int i = 0; i < 10; i++)
         {
-            int[] unsortedBuffer = new int[unsortedBuffIndex]; // TODO: 06.08.2017 temporary
+            int[] unsortedBuffer = new int[unsortedBuffIndex];
             unsortedBuffIndex = 0;
 
             for (int n : array)

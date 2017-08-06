@@ -112,7 +112,7 @@ class TablePile extends CardPile
 
         // else see if any getSuit pile can take card
         topCard = pop();
-        if (selectForSuit(topCard)) return;
+//        if (selectForSuit(topCard)) return;
 
         // else see if any other table pile can take card
         for (int i = 0; i < 7; i++)
@@ -134,7 +134,7 @@ class TablePile extends CardPile
     }
 
 
-    public void selectInDoubleClick()
+    public void selectInMultipleClick()
     {
         TablePile tablePile = this;
         Card topCard = tablePile.pop();
