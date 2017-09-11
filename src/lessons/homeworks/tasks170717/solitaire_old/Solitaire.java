@@ -76,7 +76,7 @@ public class Solitaire extends Applet
         }
 
 
-        // TODO: 01.08.2017 bug in triple click (after card was dragged & dropped, double click clones deck,
+        // TODO: 01.08.2017 bug in triple click (after card was dragged & dropped, triple click clones deck,
         // which received card into deck, where from it was taken)
 //        if (evt.clickCount == 3)
 //        {

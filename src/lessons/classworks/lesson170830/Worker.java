@@ -1,13 +1,15 @@
 package lessons.classworks.lesson170830;
 
-import java.util.LinkedList;
+import java.util.List;
 import java.util.Optional;
-import java.util.Queue;
 import java.util.concurrent.Executor;
 
 public class Worker implements Executor
 {
-    Queue<Runnable> tasks = new LinkedList<>();
+    static final Runnable POISON_PILL = () -> {};
+
+    BlockingQueue<Runnable> tasks = new BlockingQueue<>();
+    volatile private boolean stop = false;
 
     public Worker()
     {
@@ -17,34 +19,36 @@ public class Worker implements Executor
     @Override
     public void execute(Runnable command)
     {
-        synchronized (tasks)
+        if (!stop)
         {
-            tasks.offer(command);
-            tasks.notify();
+            tasks.put(command);
         }
     }
 
     private void processTasks()
     {
-        while (true)
+        while (!stop)
         {
-            Runnable task = null;
-            synchronized (tasks)
+            Runnable task = tasks.take();
+            if (task == POISON_PILL)
             {
-                while (tasks.isEmpty())
-                {
-                    try
-                    {
-                        tasks.wait();
-                    } catch (InterruptedException e)
-                    {
-                        e.printStackTrace();
-                    }
-                }
-                task = tasks.poll();
+                return;
             }
+
             Optional.ofNullable(task).ifPresent(r -> r.run());
         }
+    }
 
+    public List<Runnable> shutdownNow()
+    {
+        stop = true;
+
+        return null;
+    }
+
+    public void shutdown()
+    {
+        tasks.put(POISON_PILL);
+//        stop = true;
     }
 }

@@ -13,5 +13,8 @@ public class UseWorker
         worker.execute(() -> {
             System.out.println("world!");
         });
+
+//        worker.shutdownNow();
+        worker.shutdown();
     }
 }

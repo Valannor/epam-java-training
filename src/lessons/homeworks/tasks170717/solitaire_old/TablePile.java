@@ -115,19 +115,19 @@ class TablePile extends CardPile
 //        if (selectForSuit(topCard)) return;
 
         // else see if any other table pile can take card
-        for (int i = 0; i < 7; i++)
-        {
-            if (Solitaire.tableau[i] != this && Solitaire.tableau[i].canTake(topCard))
-            {
-                if (topCard.prevCard != null && !topCard.prevCard.isFaceUp())
-                {
-                    topCard.prevCard.flip();
-                }
-
-                Solitaire.tableau[i].push(topCard);
-                return;
-            }
-        }
+//        for (int i = 0; i < 7; i++)
+//        {
+//            if (Solitaire.tableau[i] != this && Solitaire.tableau[i].canTake(topCard))
+//            {
+//                if (topCard.prevCard != null && !topCard.prevCard.isFaceUp())
+//                {
+//                    topCard.prevCard.flip();
+//                }
+//
+//                Solitaire.tableau[i].push(topCard);
+//                return;
+//            }
+//        }
 
         // else put it back on our pile
         push(topCard);

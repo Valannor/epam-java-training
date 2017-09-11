@@ -1,4 +1,4 @@
-package lessons.classworks.lesson170825;
+package lessons.classworks.lesson170825.traders_exercises;
 
 import java.util.Arrays;
 import java.util.Comparator;
