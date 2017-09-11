@@ -1,0 +1,13 @@
+Home Tasks
+
+August 23, 2017
+
+Программа, подсчитывающая частоту слов в тексте (lambda).
+
+input:
+one one two two three
+
+output:
+one 2
+two 2
+three 1
