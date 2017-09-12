@@ -14,29 +14,38 @@ public class BinarySearchExample
     {
         //Preparations
         int[] array1 = NumberSetGenerator.generate(1_000_000);
+        int key = 123;
+
+
+        //ArrayList test
+        ModernTimer.start("Binary search in ArrayList");
 
         ArrayList<Integer> arrayList = new ArrayList<>();
         NumberSetGenerator.fillCollection(arrayList, array1);
         Collections.sort(arrayList);
+        System.out.println(Collections.binarySearch(arrayList, key));
+
+        ModernTimer.stop();
+
+
+        //LinkedList test
+        ModernTimer.start("Binary search in LinkedList");
 
         LinkedList<Integer> linkedList = new LinkedList<>();
         NumberSetGenerator.fillCollection(linkedList, array1);
         Collections.sort(linkedList);
+        System.out.println(Collections.binarySearch(linkedList, key));
+
+        ModernTimer.stop();
+
+
+        //TreeSet test
+        ModernTimer.start("Binary search in TreeSet");
 
         TreeSet<Integer> treeSet = new TreeSet<>();
         NumberSetGenerator.fillCollection(treeSet, array1);
+        System.out.println(treeSet.contains(key));
 
-        //Tests
-        ModernTimer.start("Binary search for ArrayList");
-        System.out.println(Collections.binarySearch(arrayList, 123));
-        ModernTimer.stop();
-
-        ModernTimer.start("Binary search for LinkedList");
-        System.out.println(Collections.binarySearch(linkedList, 123));
-        ModernTimer.stop();
-
-        ModernTimer.start("Binary search for TreeSet");
-        System.out.println(treeSet.contains(123));
         ModernTimer.stop();
     }
 }
