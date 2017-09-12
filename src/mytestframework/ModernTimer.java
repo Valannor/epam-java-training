@@ -32,8 +32,12 @@ public class ModernTimer
                     - (minutes * 60_000)
                     - (seconds * 1000);
 
-            System.out.format("%s - passed (min:sec:mil): %d:%d:%d",
+            System.out.format("%s - passed (min:sec:mil): %d:%d:%d\r\n" +
+                            "__________________________________________________\r\n",
                     test, minutes, seconds, millis);
+
+            isStarted = false;
+            startTimer = null;
         }
     }
 

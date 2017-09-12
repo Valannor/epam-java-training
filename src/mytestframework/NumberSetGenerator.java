@@ -1,5 +1,6 @@
 package mytestframework;
 
+import java.util.Collection;
 import java.util.Random;
 
 public class NumberSetGenerator
@@ -19,6 +20,14 @@ public class NumberSetGenerator
         }
 
         return numberSet;
+    }
+
+    public static void fillCollection(Collection<Integer> list, int[] array)
+    {
+        for (int i : array)
+        {
+            list.add(i);
+        }
     }
 
     public static int getSize()
