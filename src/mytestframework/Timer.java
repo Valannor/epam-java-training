@@ -38,10 +38,10 @@ public class Timer
         return stringResult;
     }
 
-//    public static void main(String[] args) throws InterruptedException
-//    {
-//        startTimer();
-//        Thread.sleep(5000);
-//        stopTimer();
-//    }
+    public static void main(String[] args) throws InterruptedException
+    {
+        startTimer();
+        Thread.sleep(5021);
+        System.out.println(stopTimer("TimerTest"));
+    }
 }
