@@ -1,6 +1,7 @@
 package lessons.classworks.lesson170816;
 
 import java.util.Arrays;
+import java.util.Collections;
 
 public class MyQuickSort
 {
@@ -45,6 +46,8 @@ public class MyQuickSort
 
     public static void sort(Comparable[] array)
     {
+//        Collections.shuffle( ); implement shuffle first
+
         sortQuick(array, 0, array.length - 1);
     }
 
