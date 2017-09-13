@@ -38,7 +38,7 @@ class TablePile extends CardPile
     {
         try
         {
-            if (x <= clickX && clickX <= x + Card.width &&
+            if (top() != null && x <= clickX && clickX <= x + Card.width &&
                     y <= clickY && clickY <= top().getY() + Card.height)
             {
                 Card temp = top();
@@ -110,24 +110,7 @@ class TablePile extends CardPile
         }
         chosenCard = null;
 
-        // else see if any getSuit pile can take card
         topCard = pop();
-//        if (selectForSuit(topCard)) return;
-
-        // else see if any other table pile can take card
-//        for (int i = 0; i < 7; i++)
-//        {
-//            if (Solitaire.tableau[i] != this && Solitaire.tableau[i].canTake(topCard))
-//            {
-//                if (topCard.prevCard != null && !topCard.prevCard.isFaceUp())
-//                {
-//                    topCard.prevCard.flip();
-//                }
-//
-//                Solitaire.tableau[i].push(topCard);
-//                return;
-//            }
-//        }
 
         // else put it back on our pile
         push(topCard);

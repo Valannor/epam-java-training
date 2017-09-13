@@ -57,6 +57,13 @@ public class Solitaire extends Applet
     @Override
     public boolean mouseDown(Event evt, int x, int y)
     {
+        // If we want to start new game
+        if (evt.controlDown())
+        {
+            init();
+            return false;
+        }
+
         if (evt.clickCount == 2)
         {
             for (int i = 0; i < 7; i++)
@@ -74,33 +81,6 @@ public class Solitaire extends Applet
             repaint();
             return true;
         }
-
-
-        // TODO: 01.08.2017 bug in triple click (after card was dragged & dropped, triple click clones deck,
-        // which received card into deck, where from it was taken)
-//        if (evt.clickCount == 3)
-//        {
-//            int counter = 0;
-//            for (int i = 0; i < 7; i++)
-//            {
-//                TablePile tablePile = tableau[i];
-//
-//                if (tablePile.top() != null)
-//                    tablePile.selectInMultipleClick();
-//                else counter++;
-//            }
-//
-//            if (deckPile.empty())
-//                counter++;
-//            if (discardPile.empty())
-//                counter++;
-//
-//            if (counter == 9)
-//                init();
-//
-//            repaint();
-//            return true;
-//        }
 
         for (int i = 0; i < 13; i++)
         {
