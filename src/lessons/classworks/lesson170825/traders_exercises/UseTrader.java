@@ -55,7 +55,9 @@ public class UseTrader
         System.out.println(valuesInCambridge);
 
         // 7
-//        Optional<Integer> max = transactions.stream().
+        Optional<Integer> max = transactions.stream()
+                .max(Comparator.comparing(Transaction::getValue)).map(Transaction::getValue);
+        max.ifPresent(System.out::println);
 
         // 8
         Optional<Transaction> min = transactions.stream().min(Comparator.comparing(Transaction::getValue));
