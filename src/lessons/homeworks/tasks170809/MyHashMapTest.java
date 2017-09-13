@@ -27,5 +27,13 @@ public class MyHashMapTest
         {
             System.out.println(pair.key + " : " + pair.value);
         }
+
+
+        System.out.println("\r\nRemove implementation test: John removed. He lives in " + d.remove("John"));
+
+        for (MyHashMap.Pair pair : d)
+        {
+            System.out.println(pair.key + " : " + pair.value);
+        }
     }
 }

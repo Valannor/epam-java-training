@@ -39,7 +39,7 @@ public class MyHashMap<K, V> implements Iterable<MyHashMap.Pair>
             {
                 for (Pair pair : tab)
                 {
-                    put((K)pair.key, (V)pair.value);
+                    put((K) pair.key, (V) pair.value);
                 }
             }
         }
@@ -66,6 +66,23 @@ public class MyHashMap<K, V> implements Iterable<MyHashMap.Pair>
             pair.value = value;
 
         counter++;
+    }
+
+    public V remove(K key)
+    {
+        int keyHash = getHash(key);
+
+        Pair pair = getPair(key, keyHash);
+        V value = null;
+        if (pair != null)
+        {
+            value = (V) pair.value;
+            data[keyHash].remove(pair);
+        }
+
+        counter--;
+
+        return value;
     }
 
     public V get(K key)
