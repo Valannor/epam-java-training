@@ -36,8 +36,8 @@ public class ModernTimer
                             "__________________________________________________\r\n",
                     test, minutes, seconds, millis);
 
-            isStarted = false;
-            startTimer = null;
+//            isStarted = false;
+//            startTimer = null;
         }
     }
 

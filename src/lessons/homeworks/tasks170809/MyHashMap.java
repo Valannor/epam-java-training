@@ -6,7 +6,10 @@ import java.util.List;
 
 public class MyHashMap<K, V> implements Iterable<MyHashMap.Pair>
 {
-    private static final int MAX = 10;
+    private static final int LOAD_FACTOR = 1000; //gives the best performance
+
+    private static int mapSize = 10;
+    private static int counter;
 
     public static class Pair<K, V>
     {
@@ -20,10 +23,35 @@ public class MyHashMap<K, V> implements Iterable<MyHashMap.Pair>
         }
     }
 
-    List<Pair>[] data = new List[MAX];
+    List<Pair>[] data = new List[mapSize];
+
+    private void resize()
+    {
+        counter = 0;
+        mapSize *= 100_000; //gives the best performance
+
+        List<Pair>[] old = data;
+        data = new List[mapSize];
+
+        for (List<Pair> tab : old)
+        {
+            if (tab != null)
+            {
+                for (Pair pair : tab)
+                {
+                    put((K)pair.key, (V)pair.value);
+                }
+            }
+        }
+    }
 
     public void put(K key, V value)
     {
+        if (counter / mapSize > LOAD_FACTOR)
+        {
+            resize();
+        }
+
         int keyHash = getHash(key);
 
         if (data[keyHash] == null)
@@ -36,6 +64,8 @@ public class MyHashMap<K, V> implements Iterable<MyHashMap.Pair>
             data[keyHash].add(new Pair(key, value));
         else
             pair.value = value;
+
+        counter++;
     }
 
     public V get(K key)
@@ -72,6 +102,11 @@ public class MyHashMap<K, V> implements Iterable<MyHashMap.Pair>
     private int getHash(K key)
     {
         return key.hashCode() & 0x7FFFFFFF % data.length;
+    }
+
+    public int size()
+    {
+        return counter;
     }
 
     @Override
