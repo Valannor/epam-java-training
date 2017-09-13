@@ -1,0 +1,10 @@
+Home Tasks
+
+August 9, 2017
+
+Dictionary:
+- make it generic
+- reduce hash() invocation in put()
+- automatic resize
+- benchmark:  compare  1000  10000  100000
+- implement delete (optional)
