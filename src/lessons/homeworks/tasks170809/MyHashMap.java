@@ -24,31 +24,37 @@ public class MyHashMap<K, V> implements Iterable<MyHashMap.Pair>
 
     public void put(K key, V value)
     {
-        int index = getHash(key);
+        int keyHash = getHash(key);
 
-        if (data[index] == null)
+        if (data[keyHash] == null)
         {
-            data[index] = new ArrayList<>();
+            data[keyHash] = new ArrayList<>();
         }
 
-        Pair pair = getPair(key);
+        Pair pair = getPair(key, keyHash);
         if (pair == null)
-            data[index].add(new Pair(key, value));
+            data[keyHash].add(new Pair(key, value));
         else
             pair.value = value;
     }
 
     public V get(K key)
     {
-        Pair pair = getPair(key);
+        int keyHash = getHash(key);
+        Pair pair = getPair(key, keyHash);
+
         return pair == null ? null : (V) pair.value;
     }
 
-    private Pair getPair(K key)
+    private Pair getPair(K key, int... keyHash)
     {
-        int index = getHash(key);
+        if (keyHash.length == 0)
+        {
+            keyHash = new int[1];
+            keyHash[0] = getHash(key);
+        }
 
-        List<Pair> list = data[index];
+        List<Pair> list = data[keyHash[0]];
         if (list == null)
         {
             return null;
