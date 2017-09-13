@@ -4,22 +4,28 @@ public class UseDictionary
 {
     public static void main(String[] args)
     {
-        Dictionary dictionary = new Dictionary();
+        Dictionary d = new Dictionary();
 
-        dictionary.put("Pete", "New York");
-        dictionary.put("John", "Boston");
-        dictionary.put("Вася", "Москва");
+        d.put("Pete", "New York");
+        d.put("John", "Boston");
+        d.put("Вася", "Москва");
+        d.put("Петя", "Москва");
+        d.put("Боря", "Москва");
+        d.put("Оля", "Москва");
+        d.put("Жанна", "Москва");
+        d.put("Маша", "Москва");
+        d.put("Вано", "Москва");
 
-//        System.out.println(dictionary.get("Ann"));
-//        System.out.println(dictionary.get("John"));
-//        System.out.println(dictionary.get("Вася"));
+        System.out.println(d.get("Ann"));
+        System.out.println(d.get("John"));
+        System.out.println(d.get("Вася"));
 
-        dictionary.put("Вася", "Петербург");
-//        System.out.println(dictionary.get("Вася"));
+        d.put("Вася", "Петербург");
+        System.out.println(d.get("Вася"));
 
-        for (Dictionary.Pair pair : dictionary)
+        for (Dictionary.Pair pair : d)
         {
-            System.out.println(pair.value);
+            System.out.println(pair.key + " : " + pair.value);
         }
     }
 }

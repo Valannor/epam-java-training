@@ -6,6 +6,8 @@ import java.util.List;
 
 public class Dictionary implements Iterable<Dictionary.Pair>
 {
+    private static final int MAX = 10;
+
     public static class Pair
     {
         String key;
@@ -18,7 +20,7 @@ public class Dictionary implements Iterable<Dictionary.Pair>
         }
     }
 
-    private static final int MAX = 10;
+
     List<Pair>[] data = new List[MAX];
 
     public void put(String key, String value)
@@ -70,7 +72,7 @@ public class Dictionary implements Iterable<Dictionary.Pair>
     @Override
     public Iterator<Pair> iterator()
     {
-        return new Iterator<Pair>()
+        return new Iterator<Dictionary.Pair>()
         {
             int currentElement = -1;
             Iterator<Pair> listIterator = null;
@@ -78,13 +80,15 @@ public class Dictionary implements Iterable<Dictionary.Pair>
             @Override
             public boolean hasNext()
             {
-                if (listIterator != null)
+                if (listIterator != null && listIterator.hasNext())
                 {
-                    return listIterator.hasNext();
+                    return true;
                 }
 
+                listIterator = null;
 
-                for (currentElement++; listIterator == null && currentElement < data.length; currentElement++)
+                for (++currentElement; listIterator == null
+                        && currentElement < data.length; currentElement++)
                 {
                     List<Pair> list = data[currentElement];
                     if (list == null)
