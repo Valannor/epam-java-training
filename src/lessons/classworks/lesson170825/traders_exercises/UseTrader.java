@@ -1,9 +1,6 @@
 package lessons.classworks.lesson170825.traders_exercises;
 
-import java.util.Arrays;
-import java.util.Comparator;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class UseTrader
@@ -43,23 +40,55 @@ public class UseTrader
                 new Transaction(mario, 2012, 700),
                 new Transaction(alan, 2012, 950));
 
+        //1
+        System.out.println("- 1 -");
+        List<Transaction> year2011 = transactions.stream().filter(transaction -> transaction.getYear() == 2011)
+                .collect(Collectors.toList());
+        year2011.sort(Comparator.comparing(Transaction::getValue));
+        System.out.println(year2011);
+
+        // 2
+        System.out.println("\r\n- 2 -");
+        List<String> cities = transactions.stream().map(Transaction::getTrader)
+                .map(Trader::getCity).distinct()
+                .collect(Collectors.toList());
+        System.out.println(cities);
+
+        // 3
+        System.out.println("\r\n- 3 -");
+        List<Trader> traders = transactions.stream().map(Transaction::getTrader)
+                .filter(trader -> trader.getCity().equals("Cambridge"))
+                .distinct().collect(Collectors.toList());
+        traders.sort(Comparator.comparing(Trader::getName));
+        System.out.println(traders);
+
+        // 4
+        System.out.println("\r\n- 4 -");
+        String allNamesSorted = transactions.stream().map(Transaction::getTrader).map(Trader::getName)
+                .sorted().distinct().collect(Collectors.joining(" "));
+        System.out.println(allNamesSorted);
+
         // 5
+        System.out.println("\r\n- 5 -");
         boolean inMilan = transactions.stream().map(Transaction::getTrader)
                 .distinct().anyMatch(trader -> trader.getCity().equals("Milan"));
         System.out.println(inMilan);
 
         // 6
+        System.out.println("\r\n- 6 -");
         List<Integer> valuesInCambridge = transactions.stream().filter(trader -> trader.getTrader().getCity()
                 .equals("Cambridge")).map(Transaction::getValue)
                 /*.peek(System.out::println)*/.collect(Collectors.toList());
         System.out.println(valuesInCambridge);
 
         // 7
+        System.out.println("\r\n- 7 -");
         Optional<Integer> max = transactions.stream()
                 .max(Comparator.comparing(Transaction::getValue)).map(Transaction::getValue);
         max.ifPresent(System.out::println);
 
         // 8
+        System.out.println("\r\n- 8 -");
         Optional<Transaction> min = transactions.stream().min(Comparator.comparing(Transaction::getValue));
         min.ifPresent(System.out::println);
     }
